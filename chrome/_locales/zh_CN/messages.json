@@ -3,7 +3,7 @@
     "message": "Bookmark Sync"
   },
   "extDesc": {
-    "message": "通过 Github Gist 同步书签"
+    "message": "通过 Gist 同步书签"
   },
   "otherBookmarks": {
     "message": "其他书签"

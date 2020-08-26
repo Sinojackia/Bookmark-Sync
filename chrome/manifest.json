@@ -25,9 +25,11 @@
   },
   "options_ui": {
     "open_in_tab": true,
-    "page": "options.html"
+    "page": "options.html",
+    "chrome_style": true
   },
   "permissions": [
-    "bookmarks"
+    "bookmarks",
+    "tabs"
   ]
 }

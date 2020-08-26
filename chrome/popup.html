@@ -5,19 +5,65 @@
   <meta charset="utf-8">
   <title>Popup for Bookmark Sync</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <style>
+    .btn-col {
+      margin: 10px;
+      width: 12rem;
+    }
+
+    html,
+    body {
+      display: contents;
+      background-color: #fff0;
+    }
+
+    .item {
+      border-color: #dbdbdb;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      box-shadow: none;
+      color: hsl(141, 53%, 53%);
+      cursor: pointer;
+      padding-bottom: calc(.5em - 1px);
+      padding-top: calc(.5em - 1px);
+      text-align: center;
+      white-space: nowrap;
+      font-size: 1rem;
+     }
+  </style>
 </head>
 
 <body>
-  <div style="display: flex;">
-    <button class="button" name="upload">Upload</button>
-    <button class="button" name="download">Download</button>
-    <button class="button" name="history">History</button>
-    <button class="button" name="sync">Sync</button>
+  <!-- <div style="display: flex;flex-direction: column;">
+    <div>
+      <button class="btn color-primary btn-col" name="upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
+    </div>
+    <div>
+      <button class="btn color-success btn-col" name="download"><i class="fa fa-download" aria-hidden="true"></i>Download</button>
+    </div>
+    <div>
+      <button class="btn color-link btn-col" name="sync"><i class="fa fa-refresh" aria-hidden="true"></i>Sync</button>
+    </div>
+    <div>
+      <button class="btn color-warning btn-col" name="history"><i class="fa fa-history" aria-hidden="true"></i>History</button>
+    </div>
   </div>
-  <div id="historyDiv"></div>
-
+  <div id="historyDiv"></div> </div>-->
+  <!-- <button class="btn color-link btn-col" name="sync"><i class="fa fa-refresh" aria-hidden="true"></i>Sync</button>
+  <script src="./js/common.js"></script> -->
+  <div>
+    <button class="btn color-primary btn-col" name="upload"><i class="fa fa-upload" aria-hidden="true"></i>Upload</button>
   </div>
-  <script src="./js/common.js"></script>
+  <div>
+    <button class="btn color-link btn-col" name="download"><i class="fa fa-download" aria-hidden="true"></i>Download</button>
+  </div>
+  <div>
+    <div class="btn-col item " style="display: inline-block;">
+      <span>Auto Sync:</span>
+     <button type="button" class="toggle" name="auto" style="padding: 0px; "></button>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
 </body>
-
 </html>
