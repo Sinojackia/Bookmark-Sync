@@ -288,9 +288,7 @@ const getGistContent = async (id, sha = undefined) => {
 
 const onBookmarkChanged = (id, info) => {
     if (monitorBookmark) {
-        browserActionSet({
-            text: '!!'
-        })
+        browserActionSet(SyncWarning);
     }
 }
 
@@ -300,7 +298,6 @@ chrome.runtime.onMessage.addListener(async message => {
     monitorBookmark = false
     repo = window.localStorage.repo
     browserActionSet(SyncDoing)
-
     try {
         if (message.type === 'upload') {
             if (repo == 'gitee') {
@@ -325,6 +322,7 @@ chrome.runtime.onMessage.addListener(async message => {
             return
         }
         if (message.type === 'download') {
+           
             if (repo == 'gitee') {
                 let list = await getGiteeGistList()
                 if (list.length) {
@@ -344,6 +342,7 @@ chrome.runtime.onMessage.addListener(async message => {
             } else {
                 browserActionSet(SyncError)
             }
+            monitorBookmark = true
             return
 
         }
@@ -412,6 +411,8 @@ chrome.runtime.onMessage.addListener(async message => {
         }
     } catch (e) {
         browserActionSet(SyncError)
+    }finally{
+        monitorBookmark = true
     }
 })
 
@@ -426,7 +427,12 @@ const SyncError = {
     path: 'images/logo-error-16.png',
     text: '!!!'
 }
-
+const SyncWarning = {
+    title: chrome.i18n.getMessage('extDesc'),
+    path: 'images/logo-sync-off-16.png',
+    text: 'changed',
+    color: 'orange'
+}
 const SyncDoing = {
     title: chrome.i18n.getMessage('extDesc'),
     path: 'images/logo-success-16.png',
