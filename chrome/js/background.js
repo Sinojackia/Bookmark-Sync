@@ -29,7 +29,7 @@ const browserActionReset = () => {
 
 const browserActionSet = (info = {}) => {
     chrome.browserAction.setTitle({
-        title: chrome.i18n.getMessage(info.title) || ''
+        title: info.title || ''
     })
     if (info.path) {
         chrome.browserAction.setIcon({
@@ -91,7 +91,7 @@ const setBookmark = async bm => {
         await new Promise(resolve => {
             chrome.bookmarks.create({
                 parentId: '1',
-                title: chrome.i18n.getMessage('otherBookmarks')
+                title: 'Other Bookmarks'
             }, result => {
                 folder['2'] = result.id
                 folder['unfiled_____'] = result.id
@@ -322,7 +322,6 @@ chrome.runtime.onMessage.addListener(async message => {
             return
         }
         if (message.type === 'download') {
-           
             if (repo == 'gitee') {
                 let list = await getGiteeGistList()
                 if (list.length) {
@@ -411,7 +410,7 @@ chrome.runtime.onMessage.addListener(async message => {
         }
     } catch (e) {
         browserActionSet(SyncError)
-    }finally{
+    } finally {
         monitorBookmark = true
     }
 })
