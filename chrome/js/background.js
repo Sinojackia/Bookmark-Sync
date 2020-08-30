@@ -98,6 +98,20 @@ const setBookmark = async bm => {
                 resolve()
             })
         })
+    } else {
+        await new Promise(resolve => {
+            chrome.bookmarks.getTree((result) => {
+                let childrens = result[0].children
+                for (const children of childrens) {
+                    if (children.title == chrome.i18n.getMessage('otherBookmarks')) {
+                        folder['2'] = children.id
+                        folder['unfiled_____'] = result.id
+                        break
+                    }
+                }
+                resolve()
+            })
+        })
     }
     for (let i of ['menu', 'mobile', 'tags']) {
         await new Promise(resolve => {
