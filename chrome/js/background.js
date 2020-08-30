@@ -91,7 +91,7 @@ const setBookmark = async bm => {
         await new Promise(resolve => {
             chrome.bookmarks.create({
                 parentId: '1',
-                title: 'Other Bookmarks'
+                title: chrome.i18n.getMessage('otherBookmarks')
             }, result => {
                 folder['2'] = result.id
                 folder['unfiled_____'] = result.id
